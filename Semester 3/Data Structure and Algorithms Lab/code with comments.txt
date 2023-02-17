@@ -1,0 +1,3556 @@
+
+
+    //              ===============================    linear search     ===============================
+    
+    #include <bits/stdc++.h>
+    using namespace std;
+
+    int main()
+    {
+        int n, arr[50];
+        cout<<"\n\n";
+        cout<<"Enter size of array: \n";
+        cin>>n;
+        cout<<"\nEnter elements of array seperated by space:\n";
+        for(int i=0;i<n;i++){
+            cin>> arr[i];
+        }
+
+        int key;
+        cout<<"Enter element to search:\n";
+        cin>>key;
+        for(int i=0;i<n;i++){
+            if(arr[i]==key){
+                key = i;
+                break;
+            }
+        }
+        cout<<"\nElements entered are:\n";
+        displayArray(arr,n);
+        cout<<"\nThe element was found at "<< key <<" index";
+
+        return 0;
+    }
+
+    //              =============================== 1.   binary search     ===============================
+
+    #include <bits/stdc++.h>
+    using namespace std;
+
+    int main()
+    {
+        int n, arr[50];
+        cout<<"\n\n";
+        cout<<"Enter size of array: \n";
+        cin>>n;
+        cout<<"\nEnter elements of array seperated by space:\n";
+        for(int i=0;i<n;i++){
+            cin>> arr[i];
+        }
+
+        int key;
+        cout<<"Enter element to search:\n";
+        cin>>key;   
+        int start=0,end=n-1,ans=-1;
+        while(start<=end){
+            int mid = start + (end-start)/2;
+            if(arr[mid]==key){
+                ans=mid;
+                break;
+
+            } else if(arr[mid]>key){
+                end=mid-1;
+            } else{
+                start=mid+1;
+            }
+        }
+        if(ans==-1){
+            cout<<"\nanswer not found:";
+        } else {
+            cout<<"answer found at: "<<ans+1;
+        }
+
+        cout<<"\n\n";
+
+        return 0;
+    }
+
+    //              =============================== 2.   bubble sort    ===============================
+
+    #include <bits/stdc++.h>
+    using namespace std;
+
+    void displayArray(int arr[], int n){
+        for(int i=0;i<n;i++){
+            cout<<arr[i]<<"  ";
+        }
+    }
+
+    void swapNo(int &x, int &y){
+        int temp = x;
+        x = y;
+        y = temp;
+    }
+
+    int main()
+    {
+        int n, arr[50];
+        cout<<"\n\n";
+        cout<<"Enter size of array: \n";
+        cin>>n;
+        cout<<"\nEnter elements of array seperated by space:\n";
+        for(int i=0;i<n;i++){
+            cin>> arr[i];
+        }
+
+        for(int i=0;i<=n-2;i++){
+            int cnt=0;
+            for(int j=0;j<=n-2-i;j++){
+                if(arr[j]>arr[j+1]){
+                    cnt+=1;
+                    swap(arr[j],arr[j+1]);
+                }
+            }
+            if(cnt==0)
+              break;
+        }
+        cout<<"\nSorted array is:\n";
+        displayArray(arr,n);
+
+        return 0;
+    }
+
+
+    //              =============================== 2.   insertion sort    ===============================
+
+    #include <bits/stdc++.h>
+    using namespace std;
+
+    /* Function to sort an array using insertion sort*/
+    void insertionSort(int arr[], int n)
+    {
+        int i, key, j;
+        for (i = 1; i < n; i++)
+        {
+            key = arr[i];
+            j = i - 1;
+
+            /* Move elements of arr[0..i-1], that are
+            greater than key, to one position ahead
+            of their current position */
+            while (j >= 0 && arr[j] > key)
+            {
+                arr[j + 1] = arr[j];
+                j = j - 1;
+            }
+            arr[j + 1] = key;
+        }
+    }
+
+    // A utility function to print an array of size n
+    void printArray(int arr[], int n)
+    {
+        int i;
+        for (i = 0; i < n; i++)
+            cout << arr[i] << " ";
+        cout << endl;
+    }
+
+    
+    int main()
+    {
+        int arr[] = { 12, 11, 13, 5, 6 };
+        int n = sizeof(arr) / sizeof(arr[0]);
+
+        insertionSort(arr, n);
+        printArray(arr, n);
+
+        return 0;
+    }
+
+    //              =============================== 2.   selection sort    ===============================
+
+        
+    #include <bits/stdc++.h>
+    using namespace std;
+
+    void swap(int *xp, int *yp)
+    {
+        int temp = *xp;
+        *xp = *yp;
+        *yp = temp;
+    }
+
+    void selectionSort(int arr[], int n)
+    {
+        int i, j, min_idx;
+
+        // One by one move boundary of unsorted subarray
+        for (i = 0; i < n-1; i++)
+        {
+            // Find the minimum element in unsorted array
+            min_idx = i;
+            for (j = i+1; j < n; j++)
+            if (arr[j] < arr[min_idx])
+                min_idx = j;
+
+            // Swap the found minimum element with the first element
+            swap(&arr[min_idx], &arr[i]);
+        }
+    }
+
+    /* Function to print an array */
+    void printArray(int arr[], int size)
+    {
+        int i;
+        for (i=0; i < size; i++)
+            cout << arr[i] << " ";
+        cout << endl;
+    }
+
+
+    int main()
+    {
+        int arr[] = {64, 25, 12, 22, 11};
+        int n = sizeof(arr)/sizeof(arr[0]);
+        selectionSort(arr, n);
+        cout << "Sorted array: \n";
+        printArray(arr, n);
+        return 0;
+    }
+
+    //              =============================== 4.  quick sort    ===============================
+
+    #include <bits/stdc++.h>
+    using namespace std;
+
+    // A utility function to swap two elements
+    void swap(int* a, int* b)
+    {
+        int t = *a;
+        *a = *b;
+        *b = t;
+    }
+
+    /* This function takes last element as pivot, places
+    the pivot element at its correct position in sorted
+    array, and places all smaller (smaller than pivot)
+    to left of pivot and all greater elements to right
+    of pivot */
+    int partition (int arr[], int low, int high)
+    {
+        int pivot = arr[high]; // pivot
+        int i = (low - 1); // Index of smaller element and indicates the right position of pivot found so far
+
+        for (int j = low; j <= high - 1; j++)
+        {
+            // If current element is smaller than the pivot
+            if (arr[j] < pivot)
+            {
+                i++; // increment index of smaller element
+                swap(&arr[i], &arr[j]);
+            }
+        }
+        swap(&arr[i + 1], &arr[high]);
+        return (i + 1);
+    }
+
+    /* The main function that implements QuickSort
+    arr[] --> Array to be sorted,
+    low --> Starting index,
+    high --> Ending index */
+    void quickSort(int arr[], int low, int high)
+    {
+        if (low < high)
+        {
+            /* pi is partitioning index, arr[p] is now
+            at right place */
+            int pi = partition(arr, low, high);
+
+            // Separately sort elements before
+            // partition and after partition
+            quickSort(arr, low, pi - 1);
+            quickSort(arr, pi + 1, high);
+        }
+    }
+
+    /* Function to print an array */
+    void printArray(int arr[], int size)
+    {
+        int i;
+        for (i = 0; i < size; i++)
+            cout << arr[i] << " ";
+        cout << endl;
+    }
+
+    int main()
+    {
+        int arr[] = {10, 7, 8, 9, 1, 5};
+        int n = sizeof(arr) / sizeof(arr[0]);
+        quickSort(arr, 0, n - 1);
+        cout << "Sorted array: \n";
+        printArray(arr, n);
+        return 0;
+    }
+
+
+    //              =============================== 5.   merge sort    ===============================
+
+
+    #include <bits/stdc++.h>
+    using namespace std;
+
+    // Merges two subarrays of array[].
+    // First subarray is arr[begin..mid]
+    // Second subarray is arr[mid+1..end]
+    void merge(int array[], int const left, int const mid, int const right)
+    {
+        auto const subArrayOne = mid - left + 1;
+        auto const subArrayTwo = right - mid;
+
+        // Create temp arrays
+        auto *leftArray = new int[subArrayOne],
+            *rightArray = new int[subArrayTwo];
+
+        // Copy data to temp arrays leftArray[] and rightArray[]
+        for (auto i = 0; i < subArrayOne; i++)
+            leftArray[i] = array[left + i];
+        for (auto j = 0; j < subArrayTwo; j++)
+            rightArray[j] = array[mid + 1 + j];
+
+        auto indexOfSubArrayOne = 0, // Initial index of first sub-array
+            indexOfSubArrayTwo = 0; // Initial index of second sub-array
+        int indexOfMergedArray = left; // Initial index of merged array
+
+        // Merge the temp arrays back into array[left..right]
+        while (indexOfSubArrayOne < subArrayOne && indexOfSubArrayTwo < subArrayTwo) {
+            if (leftArray[indexOfSubArrayOne] <= rightArray[indexOfSubArrayTwo]) {
+                array[indexOfMergedArray] = leftArray[indexOfSubArrayOne];
+                indexOfSubArrayOne++;
+            }
+            else {
+                array[indexOfMergedArray] = rightArray[indexOfSubArrayTwo];
+                indexOfSubArrayTwo++;
+            }
+            indexOfMergedArray++;
+        }
+        // Copy the remaining elements of
+        // left[], if there are any
+        while (indexOfSubArrayOne < subArrayOne) {
+            array[indexOfMergedArray] = leftArray[indexOfSubArrayOne];
+            indexOfSubArrayOne++;
+            indexOfMergedArray++;
+        }
+        // Copy the remaining elements of
+        // right[], if there are any
+        while (indexOfSubArrayTwo < subArrayTwo) {
+            array[indexOfMergedArray] = rightArray[indexOfSubArrayTwo];
+            indexOfSubArrayTwo++;
+            indexOfMergedArray++;
+        }
+    }
+
+    // begin is for left index and end is
+    // right index of the sub-array
+    // of arr to be sorted */
+    void mergeSort(int array[], int const begin, int const end)
+    {
+        if (begin >= end)
+            return; // Returns recursively
+
+        auto mid = begin + (end - begin) / 2;
+        mergeSort(array, begin, mid);
+        mergeSort(array, mid + 1, end);
+        merge(array, begin, mid, end);
+    }
+
+    // UTILITY FUNCTIONS
+    // Function to print an array
+    void printArray(int A[], int size)
+    {
+        for (auto i = 0; i < size; i++)
+            cout << A[i] << " ";
+    }
+
+    int main()
+    {
+        int arr[] = { 12, 11, 13, 5, 6, 7 };
+        auto arr_size = sizeof(arr) / sizeof(arr[0]);
+
+        cout << "Given array is \n";
+        printArray(arr, arr_size);
+
+        mergeSort(arr, 0, arr_size - 1);
+
+        cout << "\nSorted array is \n";
+        printArray(arr, arr_size);
+        return 0;
+    }
+
+
+    //          ============================    6.   Queue & its operations    ===============================
+
+
+    #include <bits/stdc++.h>
+    using namespace std;
+
+    // A structure to represent a queue
+    class Queue {
+    public:
+        int front, rear, size;
+        unsigned capacity;
+        int* array;
+    };
+
+    // function to create a queue
+    // of given capacity.
+    // It initializes size of queue as 0
+    Queue* createQueue(unsigned capacity)
+    {
+        Queue* queue = new Queue();
+        queue->capacity = capacity;
+        queue->front = queue->size = 0;
+
+        // This is important, see the enqueue
+        queue->rear = capacity - 1;
+        queue->array = new int[queue->capacity];
+        return queue;
+    }
+
+    // Queue is full when size
+    // becomes equal to the capacity
+    int isFull(Queue* queue)
+    {
+        return (queue->size == queue->capacity);
+    }
+
+    // Queue is empty when size is 0
+    int isEmpty(Queue* queue)
+    {
+        return (queue->size == 0);
+    }
+
+    // Function to add an item to the queue.
+    // It changes rear and size
+    void enqueue(Queue* queue, int item)
+    {
+        if (isFull(queue))
+            return;
+        queue->rear = (queue->rear + 1)
+                    % queue->capacity;
+        queue->array[queue->rear] = item;
+        queue->size = queue->size + 1;
+        cout << item << " enqueued to queue\n";
+    }
+
+    // Function to remove an item from queue.
+    // It changes front and size
+    int dequeue(Queue* queue)
+    {
+        if (isEmpty(queue))
+            return INT_MIN;
+        int item = queue->array[queue->front];
+        queue->front = (queue->front + 1)
+                    % queue->capacity;
+        queue->size = queue->size - 1;
+        return item;
+    }
+
+    // Function to get front of queue
+    int front(Queue* queue)
+    {
+        if (isEmpty(queue))
+            return INT_MIN;
+        return queue->array[queue->front];
+    }
+
+    // Function to get rear of queue
+    int rear(Queue* queue)
+    {
+        if (isEmpty(queue))
+            return INT_MIN;
+        return queue->array[queue->rear];
+    }
+
+    int main()
+    {
+        Queue* queue = createQueue(1000);
+
+        enqueue(queue, 10);
+        enqueue(queue, 20);
+        enqueue(queue, 30);
+        enqueue(queue, 40);
+
+        cout << dequeue(queue)
+            << " dequeued from queue\n";
+
+        cout << "Front item is "
+            << front(queue) << endl;
+        cout << "Rear item is "
+            << rear(queue) << endl;
+
+        return 0;
+    }
+
+
+
+
+    //          ========================    6.  Circular Queue & its operations    ===============================
+
+
+    #include<bits/stdc++.h>
+    using namespace std;
+
+    class Queue
+    {
+        // Initialize front and rear
+        int rear, front;
+
+        // Circular Queue
+        int size;
+        int *arr;
+    public:
+        Queue(int s)
+        {
+        front = rear = -1;
+        size = s;
+        arr = new int[s];
+        }
+
+        void enQueue(int value);
+        int deQueue();
+        void displayQueue();
+    };
+
+
+    /* Function to create Circular queue */
+    void Queue::enQueue(int value)
+    {
+        if ((front == 0 && rear == size-1) ||
+                (rear == (front-1)%(size-1)))
+        {
+            printf("\nQueue is Full");
+            return;
+        }
+
+        else if (front == -1) /* Insert First Element */
+        {
+            front = rear = 0;
+            arr[rear] = value;
+        }
+
+        else if (rear == size-1 && front != 0)
+        {
+            rear = 0;
+            arr[rear] = value;
+        }
+
+        else
+        {
+            rear++;
+            arr[rear] = value;
+        }
+    }
+
+    // Function to delete element from Circular Queue
+    int Queue::deQueue()
+    {
+        if (front == -1)
+        {
+            printf("\nQueue is Empty");
+            return INT_MIN;
+        }
+
+        int data = arr[front];
+        arr[front] = -1;
+        if (front == rear)
+        {
+            front = -1;
+            rear = -1;
+        }
+        else if (front == size-1)
+            front = 0;
+        else
+            front++;
+
+        return data;
+    }
+
+    // Function displaying the elements
+    // of Circular Queue
+    void Queue::displayQueue()
+    {
+        if (front == -1)
+        {
+            printf("\nQueue is Empty");
+            return;
+        }
+        printf("\nElements in Circular Queue are: ");
+        if (rear >= front)
+        {
+            for (int i = front; i <= rear; i++)
+                printf("%d ",arr[i]);
+        }
+        else
+        {
+            for (int i = front; i < size; i++)
+                printf("%d ", arr[i]);
+
+            for (int i = 0; i <= rear; i++)
+                printf("%d ", arr[i]);
+        }
+    }
+
+    /* Driver of the program */
+    int main()
+    {
+        Queue q(5);
+
+        // Inserting elements in Circular Queue
+        q.enQueue(14);
+        q.enQueue(22);
+        q.enQueue(13);
+        q.enQueue(-6);
+
+        // Display elements present in Circular Queue
+        q.displayQueue();
+
+        // Deleting elements from Circular Queue
+        printf("\nDeleted value = %d", q.deQueue());
+        printf("\nDeleted value = %d", q.deQueue());
+
+        q.displayQueue();
+
+        q.enQueue(9);
+        q.enQueue(20);
+        q.enQueue(5);
+
+        q.displayQueue();
+
+        q.enQueue(20);
+        return 0;
+    }
+
+
+    //          ==============================    6.  Singly Linked List    ===============================
+
+
+// A simple C++ program for traversal of a linked list
+// #include <bits/stdc++.h>
+// using namespace std;
+
+// class Node {
+// public:
+// 	int data;
+// 	Node* next;
+// };
+
+// This function prints contents of linked list
+// starting from the given node
+// void printList(Node* n)
+// {
+// 	while (n != NULL) {
+// 		cout << n->data << " ";
+// 		n = n->next;
+// 	}
+// }
+
+// int main()
+// {
+// 	Node* head = NULL;
+// 	Node* second = NULL;
+// 	Node* third = NULL;
+
+	// allocate 3 nodes in the heap
+// 	head = new Node();
+// 	second = new Node();
+// 	third = new Node();
+
+// 	head->data = 1; // assign data in first node
+// 	head->next = second; // Link first node with second
+
+// 	second->data = 2; // assign data to second node
+// 	second->next = third;
+
+// 	third->data = 3; // assign data to third node
+// 	third->next = NULL;
+
+// 	printList(head);
+
+// 	return 0;
+// }
+
+
+    #include <stdio.h>
+    #include<stdlib.h>
+    // Linked List Node
+    struct node {
+        int info;
+        struct node* link;
+    };
+    struct node* start = NULL;
+
+    // Function to traverse the linked list
+    void traverse()
+    {
+        struct node* temp;
+
+        // List is empty
+        if (start == NULL)
+            printf("\nList is empty\n");
+
+        // Else print the LL
+        else {
+            temp = start;
+            while (temp != NULL) {
+                printf("Data = %d\n",
+                    temp->info);
+                temp = temp->link;
+            }
+        }
+    }
+
+    // Function to insert at the front
+    // of the linked list
+    void insertAtFront()
+    {
+        int data;
+        struct node* temp;
+        temp = malloc(sizeof(struct node));
+        printf("\nEnter number to"
+            " be inserted : ");
+        scanf("%d", &data);
+        temp->info = data;
+
+        // Pointer of temp will be
+        // assigned to start
+        temp->link = start;
+        start = temp;
+    }
+
+    // Function to insert at the end of
+    // the linked list
+    void insertAtEnd()
+    {
+        int data;
+        struct node *temp, *head;
+        temp = malloc(sizeof(struct node));
+
+        // Enter the number
+        printf("\nEnter number to"
+            " be inserted : ");
+        scanf("%d", &data);
+
+        // Changes links
+        temp->link = 0;
+        temp->info = data;
+        head = start;
+        while (head->link != NULL) {
+            head = head->link;
+        }
+        head->link = temp;
+    }
+
+    // Function to insert at any specified
+    // position in the linked list
+    void insertAtPosition()
+    {
+        struct node *temp, *newnode;
+        int pos, data, i = 1;
+        newnode = malloc(sizeof(struct node));
+
+        // Enter the position and data
+        printf("\nEnter position and data :");
+        scanf("%d %d", &pos, &data);
+
+        // Change Links
+        temp = start;
+        newnode->info = data;
+        newnode->link = 0;
+        while (i < pos - 1) {
+            temp = temp->link;
+            i++;
+        }
+        newnode->link = temp->link;
+        temp->link = newnode;
+    }
+
+    // Function to delete from the front
+    // of the linked list
+    void deleteFirst()
+    {
+        struct node* temp;
+        if (start == NULL)
+            printf("\nList is empty\n");
+        else {
+            temp = start;
+            start = start->link;
+            free(temp);
+        }
+    }
+
+    // Function to delete from the end
+    // of the linked list
+    void deleteEnd()
+    {
+        struct node *temp, *prevnode;
+        if (start == NULL)
+            printf("\nList is Empty\n");
+        else {
+            temp = start;
+            while (temp->link != 0) {
+                prevnode = temp;
+                temp = temp->link;
+            }
+            free(temp);
+            prevnode->link = 0;
+        }
+    }
+
+    // Function to delete from any specified
+    // position from the linked list
+    void deletePosition()
+    {
+        struct node *temp, *position;
+        int i = 1, pos;
+
+        // If LL is empty
+        if (start == NULL)
+            printf("\nList is empty\n");
+
+        // Otherwise
+        else {
+            printf("\nEnter index : ");
+
+            // Position to be deleted
+            scanf("%d", &pos);
+            position = malloc(sizeof(struct node));
+            temp = start;
+
+            // Traverse till position
+            while (i < pos - 1) {
+                temp = temp->link;
+                i++;
+            }
+
+            // Change Links
+            position = temp->link;
+            temp->link = position->link;
+
+            // Free memory
+            free(position);
+        }
+    }
+
+    // Function to find the maximum element
+    // in the linked list
+    void maximum()
+    {
+        int a[10];
+        int i;
+        struct node* temp;
+
+        // If LL is empty
+        if (start == NULL)
+            printf("\nList is empty\n");
+
+        // Otherwise
+        else {
+            temp = start;
+            int max = temp->info;
+
+            // Traverse LL and update the
+            // maximum element
+            while (temp != NULL) {
+
+                // Update the maximum
+                // element
+                if (max < temp->info)
+                    max = temp->info;
+                temp = temp->link;
+            }
+            printf("\nMaximum number "
+                "is : %d ",
+                max);
+        }
+    }
+
+    // Function to find the mean of the
+    // elements in the linked list
+    void mean()
+    {
+        int a[10];
+        int i;
+        struct node* temp;
+
+        // If LL is empty
+        if (start == NULL)
+            printf("\nList is empty\n");
+
+        // Otherwise
+        else {
+            temp = start;
+
+            // Stores the sum and count of
+            // element in the LL
+            int sum = 0, count = 0;
+            float m;
+
+            // Traverse the LL
+            while (temp != NULL) {
+
+                // Update the sum
+                sum = sum + temp->info;
+                temp = temp->link;
+                count++;
+            }
+
+            // Find the mean
+            m = sum / count;
+
+            // Print the mean value
+            printf("\nMean is %f ", m);
+        }
+    }
+
+    // Function to sort the linked list
+    // in ascending order
+    void sort()
+    {
+        struct node* current = start;
+        struct node* index = NULL;
+        int temp;
+
+        // If LL is empty
+        if (start == NULL) {
+            return;
+        }
+
+        // Else
+        else {
+
+            // Traverse the LL
+            while (current != NULL) {
+                index = current->link;
+
+                // Traverse the LL nestedly
+                // and find the minimum
+                // element
+                while (index != NULL) {
+
+                    // Swap with it the value
+                    // at current
+                    if (current->info > index->info) {
+                        temp = current->info;
+                        current->info = index->info;
+                        index->info = temp;
+                    }
+                    index = index->link;
+                }
+
+                // Update the current
+                current = current->link;
+            }
+        }
+    }
+
+    // Function to reverse the linked list
+    void reverseLL()
+    {
+        struct node *t1, *t2, *temp;
+        t1 = t2 = NULL;
+
+        // If LL is empty
+        if (start == NULL)
+            printf("List is empty\n");
+
+        // Else
+        else {
+
+            // Traverse the LL
+            while (start != NULL) {
+
+                // reversing of points
+                t2 = start->link;
+                start->link = t1;
+                t1 = start;
+                start = t2;
+            }
+            start = t1;
+
+            // New head Node
+            temp = start;
+
+            printf("Reversed linked "
+                "list is : ");
+
+            // Print the LL
+            while (temp != NULL) {
+                printf("%d ", temp->info);
+                temp = temp->link;
+            }
+        }
+    }
+
+    // Driver Code
+    int main()
+    {
+        int choice;
+        while (1) {
+
+            printf("\n\t1 To see list\n");
+            printf("\t2 For insertion at"
+                " starting\n");
+            printf("\t3 For insertion at"
+                " end\n");
+            printf("\t4 For insertion at "
+                "any position\n");
+            printf("\t5 For deletion of "
+                "first element\n");
+            printf("\t6 For deletion of "
+                "last element\n");
+            printf("\t7 For deletion of "
+                "element at any position\n");
+            printf("\t8 To find maximum among"
+                " the elements\n");
+            printf("\t9 To find mean of "
+                "the elements\n");
+            printf("\t10 To sort element\n");
+            printf("\t11 To reverse the "
+                "linked list\n");
+            printf("\t12 To exit\n");
+            printf("\nEnter Choice :\n");
+            scanf("%d", &choice);
+
+            switch (choice) {
+            case 1:
+                traverse();
+                break;
+            case 2:
+                insertAtFront();
+                break;
+            case 3:
+                insertAtEnd();
+                break;
+            case 4:
+                insertAtPosition();
+                break;
+            case 5:
+                deleteFirst();
+                break;
+            case 6:
+                deleteEnd();
+                break;
+            case 7:
+                deletePosition();
+                break;
+            case 8:
+                maximum();
+                break;
+            case 9:
+                mean();
+                break;
+            case 10:
+                sort();
+                break;
+            case 11:
+                reverseLL();
+                break;
+            case 12:
+                exit(1);
+                break;
+            default:
+                printf("Incorrect Choice\n");
+            }
+        }
+        return 0;
+    }
+
+
+
+
+    //          ==============================    6.  Doubly Linked List    ===============================
+
+// A complete working C++ program to
+// demonstrate all insertion methods
+#include <bits/stdc++.h>
+using namespace std;
+
+// A linked list node
+class Node
+{
+	public:
+	int data;
+	Node* next;
+	Node* prev;
+};
+
+/* Given a reference (pointer to pointer)
+to the head of a list
+and an int, inserts a new node on the
+front of the list. */
+void push(Node** head_ref, int new_data)
+{
+	/* 1. allocate node */
+	Node* new_node = new Node();
+
+	/* 2. put in the data */
+	new_node->data = new_data;
+
+	/* 3. Make next of new node as head
+	and previous as NULL */
+	new_node->next = (*head_ref);
+	new_node->prev = NULL;
+
+	/* 4. change prev of head node to new node */
+	if ((*head_ref) != NULL)
+		(*head_ref)->prev = new_node;
+
+	/* 5. move the head to point to the new node */
+	(*head_ref) = new_node;
+}
+
+/* Given a node as prev_node, insert
+a new node after the given node */
+void insertAfter(Node* prev_node, int new_data)
+{
+	/*1. check if the given prev_node is NULL */
+	if (prev_node == NULL)
+	{
+		cout<<"the given previous node cannot be NULL";
+		return;
+	}
+
+	/* 2. allocate new node */
+	Node* new_node = new Node();
+
+	/* 3. put in the data */
+	new_node->data = new_data;
+
+	/* 4. Make next of new node as next of prev_node */
+	new_node->next = prev_node->next;
+
+	/* 5. Make the next of prev_node as new_node */
+	prev_node->next = new_node;
+
+	/* 6. Make prev_node as previous of new_node */
+	new_node->prev = prev_node;
+
+	/* 7. Change previous of new_node's next node */
+	if (new_node->next != NULL)
+		new_node->next->prev = new_node;
+}
+
+/* Given a reference (pointer to pointer) to the head
+of a DLL and an int, appends a new node at the end */
+void append(Node** head_ref, int new_data)
+{
+	/* 1. allocate node */
+	Node* new_node = new Node();
+
+	Node* last = *head_ref; /* used in step 5*/
+
+	/* 2. put in the data */
+	new_node->data = new_data;
+
+	/* 3. This new node is going to be the last node, so
+		make next of it as NULL*/
+	new_node->next = NULL;
+
+	/* 4. If the Linked List is empty, then make the new
+		node as head */
+	if (*head_ref == NULL)
+	{
+		new_node->prev = NULL;
+		*head_ref = new_node;
+		return;
+	}
+
+	/* 5. Else traverse till the last node */
+	while (last->next != NULL)
+		last = last->next;
+
+	/* 6. Change the next of last node */
+	last->next = new_node;
+
+	/* 7. Make last node as previous of new node */
+	new_node->prev = last;
+
+	return;
+}
+
+// This function prints contents of
+// linked list starting from the given node
+void printList(Node* node)
+{
+	Node* last;
+	cout<<"\nTraversal in forward direction \n";
+	while (node != NULL)
+	{
+		cout<<" "<<node->data<<" ";
+		last = node;
+		node = node->next;
+	}
+
+	cout<<"\nTraversal in reverse direction \n";
+	while (last != NULL)
+	{
+		cout<<" "<<last->data<<" ";
+		last = last->prev;
+	}
+}
+
+/* Driver program to test above functions*/
+int main()
+{
+	/* Start with the empty list */
+	Node* head = NULL;
+
+	// Insert 6. So linked list becomes 6->NULL
+	append(&head, 6);
+
+	// Insert 7 at the beginning. So
+	// linked list becomes 7->6->NULL
+	push(&head, 7);
+
+	// Insert 1 at the beginning. So
+	// linked list becomes 1->7->6->NULL
+	push(&head, 1);
+
+	// Insert 4 at the end. So linked
+	// list becomes 1->7->6->4->NULL
+	append(&head, 4);
+
+	// Insert 8, after 7. So linked
+	// list becomes 1->7->8->6->4->NULL
+	insertAfter(head->next, 8);
+
+	cout << "Created DLL is: ";
+	printList(head);
+
+	return 0;
+}
+
+// This is code is contributed by rathbhupendra
+
+
+
+// C++ program to delete a node from
+// Doubly Linked List
+#include <bits/stdc++.h>
+using namespace std;
+
+/* a node of the doubly linked list */
+class Node
+{
+	public:
+	int data;
+	Node* next;
+	Node* prev;
+};
+
+/* Function to delete a node in a Doubly Linked List.
+head_ref --> pointer to head node pointer.
+del --> pointer to node to be deleted. */
+void deleteNode(Node** head_ref, Node* del)
+{
+	/* base case */
+	if (*head_ref == NULL || del == NULL)
+		return;
+
+	/* If node to be deleted is head node */
+	if (*head_ref == del)
+		*head_ref = del->next;
+
+	/* Change next only if node to be
+	deleted is NOT the last node */
+	if (del->next != NULL)
+		del->next->prev = del->prev;
+
+	/* Change prev only if node to be
+	deleted is NOT the first node */
+	if (del->prev != NULL)
+		del->prev->next = del->next;
+
+	/* Finally, free the memory occupied by del*/
+	free(del);
+	return;
+}
+
+/* UTILITY FUNCTIONS */
+/* Function to insert a node at the
+beginning of the Doubly Linked List */
+void push(Node** head_ref, int new_data)
+{
+	/* allocate node */
+	Node* new_node = new Node();
+
+	/* put in the data */
+	new_node->data = new_data;
+
+	/* since we are adding at the beginning,
+	prev is always NULL */
+	new_node->prev = NULL;
+
+	/* link the old list off the new node */
+	new_node->next = (*head_ref);
+
+	/* change prev of head node to new node */
+	if ((*head_ref) != NULL)
+		(*head_ref)->prev = new_node;
+
+	/* move the head to point to the new node */
+	(*head_ref) = new_node;
+}
+
+/* Function to print nodes in a given doubly linked list
+This function is same as printList() of singly linked list */
+void printList(Node* node)
+{
+	while (node != NULL)
+	{
+		cout << node->data << " ";
+		node = node->next;
+	}
+}
+
+/* Driver code*/
+int main()
+{
+	/* Start with the empty list */
+	Node* head = NULL;
+
+	/* Let us create the doubly linked list 10<->8<->4<->2 */
+	push(&head, 2);
+	push(&head, 4);
+	push(&head, 8);
+	push(&head, 10);
+
+	cout << "Original Linked list ";
+	printList(head);
+
+	/* delete nodes from the doubly linked list */
+	deleteNode(&head, head); /*delete first node*/
+	deleteNode(&head, head->next); /*delete middle node*/
+	deleteNode(&head, head->next); /*delete last node*/
+
+	/* Modified linked list will be NULL<-8->NULL */
+	cout << "\nModified Linked list ";
+	printList(head);
+
+	return 0;
+}
+
+// This code is contributed by rathbhupendra
+
+#include <iostream>
+using namespace std;
+
+// node creation
+struct Node {
+  int data;
+  struct Node* next;
+  struct Node* prev;
+};
+
+// insert node at the front
+void insertFront(struct Node** head, int data) {
+  // allocate memory for newNode
+  struct Node* newNode = new Node;
+
+  // assign data to newNode
+  newNode->data = data;
+
+  // make newNode as a head
+  newNode->next = (*head);
+
+  // assign null to prev
+  newNode->prev = NULL;
+
+  // previous of head (now head is the second node) is newNode
+  if ((*head) != NULL)
+    (*head)->prev = newNode;
+
+  // head points to newNode
+  (*head) = newNode;
+}
+
+// insert a node after a specific node
+void insertAfter(struct Node* prev_node, int data) {
+  // check if previous node is null
+  if (prev_node == NULL) {
+    cout << "previous node cannot be null";
+    return;
+  }
+
+  // allocate memory for newNode
+  struct Node* newNode = new Node;
+
+  // assign data to newNode
+  newNode->data = data;
+
+  // set next of newNode to next of prev node
+  newNode->next = prev_node->next;
+
+  // set next of prev node to newNode
+  prev_node->next = newNode;
+
+  // set prev of newNode to the previous node
+  newNode->prev = prev_node;
+
+  // set prev of newNode's next to newNode
+  if (newNode->next != NULL)
+    newNode->next->prev = newNode;
+}
+
+// insert a newNode at the end of the list
+void insertEnd(struct Node** head, int data) {
+  // allocate memory for node
+  struct Node* newNode = new Node;
+
+  // assign data to newNode
+  newNode->data = data;
+
+  // assign null to next of newNode
+  newNode->next = NULL;
+
+  // store the head node temporarily (for later use)
+  struct Node* temp = *head;
+
+  // if the linked list is empty, make the newNode as head node
+  if (*head == NULL) {
+    newNode->prev = NULL;
+    *head = newNode;
+    return;
+  }
+
+  // if the linked list is not empty, traverse to the end of the linked list
+  while (temp->next != NULL)
+    temp = temp->next;
+
+  // now, the last node of the linked list is temp
+
+  // assign next of the last node (temp) to newNode
+  temp->next = newNode;
+
+  // assign prev of newNode to temp
+  newNode->prev = temp;
+}
+
+// delete a node from the doubly linked list
+void deleteNode(struct Node** head, struct Node* del_node) {
+  // if head or del is null, deletion is not possible
+  if (*head == NULL || del_node == NULL)
+    return;
+
+  // if del_node is the head node, point the head pointer to the next of del_node
+  if (*head == del_node)
+    *head = del_node->next;
+
+  // if del_node is not at the last node, point the prev of node next to del_node to the previous of del_node
+  if (del_node->next != NULL)
+    del_node->next->prev = del_node->prev;
+
+  // if del_node is not the first node, point the next of the previous node to the next node of del_node
+  if (del_node->prev != NULL)
+    del_node->prev->next = del_node->next;
+
+  // free the memory of del_node
+  free(del_node);
+}
+
+// print the doubly linked list
+void displayList(struct Node* node) {
+  struct Node* last;
+
+  while (node != NULL) {
+    cout << node->data << "->";
+    last = node;
+    node = node->next;
+  }
+  if (node == NULL)
+    cout << "NULL\n";
+}
+
+int main() {
+  // initialize an empty node
+  struct Node* head = NULL;
+
+  insertEnd(&head, 5);
+  insertFront(&head, 1);
+  insertFront(&head, 6);
+  insertEnd(&head, 9);
+
+  // insert 11 after head
+  insertAfter(head, 11);
+
+  // insert 15 after the seond node
+  insertAfter(head->next, 15);
+
+  displayList(head);
+
+  // delete the last node
+  deleteNode(&head, head->next->next->next->next->next);
+
+  displayList(head);
+}
+
+
+// C++ program to implement
+// the above approach
+
+#include <bits/stdc++.h>
+using namespace std;
+
+// Structure of a node of
+// the doubly linked list
+struct Node {
+
+	// Stores data value
+	// of a node
+	int data;
+
+	// Stores pointer
+	// to next node
+	Node* next;
+
+	// Stores pointer
+	// to previous node
+	Node* prev;
+};
+
+// Function to insert a node at the
+// beginning of the Doubly Linked List
+void push(Node** head_ref, int new_data)
+{
+
+	// Allocate memory for new node
+	Node* new_node
+		= (Node*)malloc(sizeof(struct Node));
+
+	// Insert the data
+	new_node->data = new_data;
+
+	// Since node is added at the
+	// beginning, prev is always NULL
+	new_node->prev = NULL;
+
+	// Link the old list to the new node
+	new_node->next = (*head_ref);
+
+	// If pointer to head is not NULL
+	if ((*head_ref) != NULL) {
+
+		// Change the prev of head
+		// node to new node
+		(*head_ref)->prev = new_node;
+	}
+
+	// Move the head to point to the new node
+	(*head_ref) = new_node;
+}
+
+// Function to find the position of
+// an integer in doubly linked list
+int search(Node** head_ref, int x)
+{
+
+	// Stores head Node
+	Node* temp = *head_ref;
+
+	// Stores position of the integer
+	// in the doubly linked list
+	int pos = 0;
+
+	// Traverse the doubly linked list
+	while (temp->data != x
+		&& temp->next != NULL) {
+
+		// Update pos
+		pos++;
+
+		// Update temp
+		temp = temp->next;
+	}
+
+	// If the integer not present
+	// in the doubly linked list
+	if (temp->data != x)
+		return -1;
+
+	// If the integer present in
+	// the doubly linked list
+	return (pos + 1);
+}
+
+// Driver Code
+int main()
+{
+	Node* head = NULL;
+	int X = 8;
+
+	// Create the doubly linked list
+	// 18 <-> 15 <-> 8 <-> 9 <-> 14
+	push(&head, 14);
+	push(&head, 9);
+	push(&head, 8);
+	push(&head, 15);
+	push(&head, 18);
+
+	cout << search(&head, X);
+
+	return 0;
+}
+
+
+
+
+    //          ==============================    6.  Circular Linked List    ===============================
+
+
+
+// C++ code to perform circular linked list operations
+
+#include <iostream>
+
+using namespace std;
+
+struct Node {
+  int data;
+  struct Node* next;
+};
+
+struct Node* addToEmpty(struct Node* last, int data) {
+  if (last != NULL) return last;
+
+  // allocate memory to the new node
+  struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+
+  // assign data to the new node
+  newNode->data = data;
+
+  // assign last to newNode
+  last = newNode;
+
+  // create link to iteself
+  last->next = last;
+
+  return last;
+}
+
+// add node to the front
+struct Node* addFront(struct Node* last, int data) {
+  // check if the list is empty
+  if (last == NULL) return addToEmpty(last, data);
+
+  // allocate memory to the new node
+  struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+
+  // add data to the node
+  newNode->data = data;
+
+  // store the address of the current first node in the newNode
+  newNode->next = last->next;
+
+  // make newNode as head
+  last->next = newNode;
+
+  return last;
+}
+
+// add node to the end
+struct Node* addEnd(struct Node* last, int data) {
+  // check if the node is empty
+  if (last == NULL) return addToEmpty(last, data);
+
+  // allocate memory to the new node
+  struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+
+  // add data to the node
+  newNode->data = data;
+
+  // store the address of the head node to next of newNode
+  newNode->next = last->next;
+
+  // point the current last node to the newNode
+  last->next = newNode;
+
+  // make newNode as the last node
+  last = newNode;
+
+  return last;
+}
+
+// insert node after a specific node
+struct Node* addAfter(struct Node* last, int data, int item) {
+  // check if the list is empty
+  if (last == NULL) return NULL;
+
+  struct Node *newNode, *p;
+
+  p = last->next;
+  do {
+  // if the item is found, place newNode after it
+  if (p->data == item) {
+    // allocate memory to the new node
+    newNode = (struct Node*)malloc(sizeof(struct Node));
+
+    // add data to the node
+    newNode->data = data;
+
+    // make the next of the current node as the next of newNode
+    newNode->next = p->next;
+
+    // put newNode to the next of p
+    p->next = newNode;
+
+    // if p is the last node, make newNode as the last node
+    if (p == last) last = newNode;
+    return last;
+  }
+
+  p = p->next;
+  } while (p != last->next);
+
+  cout << "\nThe given node is not present in the list" << endl;
+  return last;
+}
+
+// delete a node
+void deleteNode(Node** last, int key) {
+  // if linked list is empty
+  if (*last == NULL) return;
+
+  // if the list contains only a single node
+  if ((*last)->data == key && (*last)->next == *last) {
+  free(*last);
+  *last = NULL;
+  return;
+  }
+
+  Node *temp = *last, *d;
+
+  // if last is to be deleted
+  if ((*last)->data == key) {
+  // find the node before the last node
+  while (temp->next != *last) temp = temp->next;
+
+  // point temp node to the next of last i.e. first node
+  temp->next = (*last)->next;
+  free(*last);
+  *last = temp->next;
+  }
+
+  // travel to the node to be deleted
+  while (temp->next != *last && temp->next->data != key) {
+  temp = temp->next;
+  }
+
+  // if node to be deleted was found
+  if (temp->next->data == key) {
+  d = temp->next;
+  temp->next = d->next;
+  free(d);
+  }
+}
+
+void traverse(struct Node* last) {
+  struct Node* p;
+
+  if (last == NULL) {
+  cout << "The list is empty" << endl;
+  return;
+  }
+
+  p = last->next;
+
+  do {
+  cout << p->data << " ";
+  p = p->next;
+
+  } while (p != last->next);
+}
+
+int main() {
+  struct Node* last = NULL;
+
+  last = addToEmpty(last, 6);
+  last = addEnd(last, 8);
+  last = addFront(last, 2);
+
+  last = addAfter(last, 10, 2);
+
+  traverse(last);
+
+  deleteNode(&last, 8);
+  cout << endl;
+
+  traverse(last);
+
+  return 0;
+}
+
+
+
+
+
+#include<stdio.h>
+#include<stdlib.h>
+
+struct node
+{
+        int info;
+        struct node *link;
+};
+
+struct node *create_list(struct node *last);
+void display(struct node *last);
+struct node *addtoempty(struct node *last,int data);
+struct node *addatbeg(struct node *last,int data);
+struct node *addatend(struct node *last,int data);
+struct node *addafter(struct node *last,int data,int item);
+struct node *del(struct node *last,int data);
+
+int main( )
+{
+        int choice,data,item;
+        struct node     *last=NULL;
+
+        while(1)
+        {
+                printf("\n\n1.Create List\n");
+                printf("2.Display\n");
+                printf("3.Add to empty list\n");
+                printf("4.Add at beginning\n");
+                printf("5.Add at end\n");
+                printf("6.Add after \n");
+                printf("7.Delete\n");
+                printf("8.Quit\n");
+
+                printf("\nEnter your choice : ");
+                scanf("%d",&choice);
+
+                switch(choice)
+                {
+                 case 1:
+                        last=create_list(last);
+                        break;
+                 case 2:
+                        display(last);
+                        break;
+                 case 3:
+                        printf("\nEnter the element to be inserted : ");
+                        scanf("%d",&data);
+                        last=addtoempty(last,data);
+                        break;
+                 case 4:
+                        printf("\nEnter the element to be inserted : ");
+                        scanf("%d",&data);
+                        last=addatbeg(last,data);
+                        break;
+                 case 5:
+                        printf("\nEnter the element to be inserted : ");
+                        scanf("%d",&data);
+                        last=addatend(last,data);
+                        break;
+                 case 6:
+                        printf("\nEnter the element to be inserted : ");
+                        scanf("%d",&data);
+                        printf("\nEnter the element after which to insert : ");
+                        scanf("%d",&item);
+                        last=addafter(last,data,item);
+                        break;
+                 case 7:
+                        printf("\nEnter the element to be deleted : ");
+                        scanf("%d",&data);
+                        last=del(last,data);
+                        break;
+                 case 8:
+                        exit(1);
+                 default:
+                        printf("\nWrong choice\n");
+                }/*End of switch*/
+        }/*End of while*/
+
+        return 0;
+
+}/*End of main( )*/
+
+struct node *create_list(struct node *last)
+{
+        int i,n,data;
+        printf("\nEnter the number of nodes : ");
+        scanf("%d",&n);
+        last=NULL;
+        if(n==0)
+                return last;
+        printf("Enter the element to be inserted : ");
+        scanf("%d",&data);
+        last=addtoempty(last,data);
+
+        for(i=2;i<=n;i++)
+        {
+                printf("Enter the element to be inserted : ");
+                scanf("%d",&data);
+                last=addatend(last,data);
+        }
+        return last;
+}/*End of create_list()*/
+
+struct node *addtoempty(struct node *last,int data)
+{
+        struct node *tmp;
+        tmp=(struct node *)malloc(sizeof(struct node));
+        tmp->info=data;
+        last=tmp;
+        last->link=last;
+        return last;
+}/*End of addtoempty( )*/
+
+struct node *addatbeg(struct node *last,int data)
+{
+        struct node *tmp;
+        tmp=(struct node *)malloc(sizeof(struct node));
+        tmp->info=data;
+        tmp->link=last->link;
+        last->link=tmp;
+        return last;
+}/*End of addatbeg( )*/
+
+struct node *addatend(struct node *last,int data)
+{
+        struct node *tmp;
+        tmp=(struct node *)malloc(sizeof(struct node));
+        tmp->info=data;
+        tmp->link=last->link;
+        last->link=tmp;
+        last=tmp;
+        return last;
+}/*End of addatend( )*/
+
+struct node *addafter(struct node *last,int data,int item)
+{
+        struct node *tmp,*p;
+        p=last->link;
+        do
+        {
+                if(p->info==item)
+                {
+                        tmp=(struct node *)malloc(sizeof(struct node));
+                        tmp->info=data;
+                        tmp->link=p->link;
+                        p->link=tmp;
+                        if(p==last)
+                                last=tmp;
+                        return last;
+                }
+                p=p->link;
+        }while(p!=last->link);
+        printf("%d not present in the list\n",item);
+        return last;
+}/*End of addafter()*/
+
+struct node *del(struct node *last,int data)
+{
+        struct node *tmp,*p;
+        if(last==NULL)
+        {
+                printf("List is empty\n");
+                return last;
+        }
+        /*Deletion of only node*/
+        if(last->link==last && last->info==data)
+        {
+                tmp=last;
+                last=NULL;
+                free(tmp);
+                return last;
+        }
+        /*Deletion of first node*/
+        if(last->link->info==data)
+        {
+                tmp=last->link;
+                last->link=tmp->link;
+                free(tmp);
+                return last;
+        }
+        /*Deletion in between*/
+        p=last->link;
+        while(p->link!=last)
+        {
+                if(p->link->info==data)
+                {
+                        tmp=p->link;
+                        p->link=tmp->link;
+                        free(tmp);
+                        return last;
+                }
+                p=p->link;
+        }
+        /*Deletion of last node*/
+        if(last->info==data)
+        {
+                tmp=last;
+                p->link=last->link;
+                last=p;
+                free(tmp);
+                return last;
+        }
+        printf("\nElement %d not found\n",data);
+        return last;
+}/*End of del( )*/
+
+void display(struct node *last)
+{
+        struct node *p;
+        if(last==NULL)
+        {
+                printf("\nList is empty\n");
+                return;
+        }
+        p=last->link;
+        do
+        {
+                printf("%d ",p->info);
+                p=p->link;
+        }while(p!=last->link);
+        printf("\n");
+}/*End of display( )*/
+
+
+
+
+
+
+
+
+
+
+
+
+    //          ====================================    6.  B Tree    ====================================
+
+
+// Searching a key on a B-tree in C++
+
+#include <iostream>
+using namespace std;
+
+class TreeNode {
+  int *keys;
+  int t;
+  TreeNode **C;
+  int n;
+  bool leaf;
+
+   public:
+  TreeNode(int temp, bool bool_leaf);
+
+  void insertNonFull(int k);
+  void splitChild(int i, TreeNode *y);
+  void traverse();
+
+  TreeNode *search(int k);
+
+  friend class BTree;
+};
+
+class BTree {
+  TreeNode *root;
+  int t;
+
+   public:
+  BTree(int temp) {
+    root = NULL;
+    t = temp;
+  }
+
+  void traverse() {
+    if (root != NULL)
+      root->traverse();
+  }
+
+  TreeNode *search(int k) {
+    return (root == NULL) ? NULL : root->search(k);
+  }
+
+  void insert(int k);
+};
+
+TreeNode::TreeNode(int t1, bool leaf1) {
+  t = t1;
+  leaf = leaf1;
+
+  keys = new int[2 * t - 1];
+  C = new TreeNode *[2 * t];
+
+  n = 0;
+}
+
+void TreeNode::traverse() {
+  int i;
+  for (i = 0; i < n; i++) {
+    if (leaf == false)
+      C[i]->traverse();
+    cout << " " << keys[i];
+  }
+
+  if (leaf == false)
+    C[i]->traverse();
+}
+
+TreeNode *TreeNode::search(int k) {
+  int i = 0;
+  while (i < n && k > keys[i])
+    i++;
+
+  if (keys[i] == k)
+    return this;
+
+  if (leaf == true)
+    return NULL;
+
+  return C[i]->search(k);
+}
+
+void BTree::insert(int k) {
+  if (root == NULL) {
+    root = new TreeNode(t, true);
+    root->keys[0] = k;
+    root->n = 1;
+  } else {
+    if (root->n == 2 * t - 1) {
+      TreeNode *s = new TreeNode(t, false);
+
+      s->C[0] = root;
+
+      s->splitChild(0, root);
+
+      int i = 0;
+      if (s->keys[0] < k)
+        i++;
+      s->C[i]->insertNonFull(k);
+
+      root = s;
+    } else
+      root->insertNonFull(k);
+  }
+}
+
+void TreeNode::insertNonFull(int k) {
+  int i = n - 1;
+
+  if (leaf == true) {
+    while (i >= 0 && keys[i] > k) {
+      keys[i + 1] = keys[i];
+      i--;
+    }
+
+    keys[i + 1] = k;
+    n = n + 1;
+  } else {
+    while (i >= 0 && keys[i] > k)
+      i--;
+
+    if (C[i + 1]->n == 2 * t - 1) {
+      splitChild(i + 1, C[i + 1]);
+
+      if (keys[i + 1] < k)
+        i++;
+    }
+    C[i + 1]->insertNonFull(k);
+  }
+}
+
+void TreeNode::splitChild(int i, TreeNode *y) {
+  TreeNode *z = new TreeNode(y->t, y->leaf);
+  z->n = t - 1;
+
+  for (int j = 0; j < t - 1; j++)
+    z->keys[j] = y->keys[j + t];
+
+  if (y->leaf == false) {
+    for (int j = 0; j < t; j++)
+      z->C[j] = y->C[j + t];
+  }
+
+  y->n = t - 1;
+  for (int j = n; j >= i + 1; j--)
+    C[j + 1] = C[j];
+
+  C[i + 1] = z;
+
+  for (int j = n - 1; j >= i; j--)
+    keys[j + 1] = keys[j];
+
+  keys[i] = y->keys[t - 1];
+  n = n + 1;
+}
+
+int main() {
+  BTree t(3);
+  t.insert(8);
+  t.insert(9);
+  t.insert(10);
+  t.insert(11);
+  t.insert(15);
+  t.insert(16);
+  t.insert(17);
+  t.insert(18);
+  t.insert(20);
+  t.insert(23);
+
+  cout << "The B-tree is: ";
+  t.traverse();
+
+  int k = 10;
+  (t.search(k) != NULL) ? cout << endl
+                 << k << " is found"
+              : cout << endl
+                 << k << " is not Found";
+
+  k = 2;
+  (t.search(k) != NULL) ? cout << endl
+                 << k << " is found"
+              : cout << endl
+                 << k << " is not Found\n";
+}
+
+
+
+
+/* C++ Program to implement B-Tree using Class using Linked Lists */
+
+#include <iostream>
+#include <stdlib.h>
+
+using namespace std;
+const int MAX = 4 ;
+const int MIN = 2 ;
+struct btnode
+{
+        int count ;
+        int value[MAX + 1] ;
+        btnode *child[MAX + 1] ;
+} ;
+class btree
+{
+        private :
+                btnode *root ;
+        public :
+                btree( ) ;
+                void insert ( int val ) ;
+                int setval ( int val, btnode *n, int *p, btnode **c ) ;
+                static btnode * search ( int val, btnode *root, int *pos ) ;
+                static int searchnode ( int val, btnode *n, int *pos ) ;
+                void fillnode ( int val, btnode *c, btnode *n, int k ) ;
+                void split ( int val, btnode *c, btnode *n,
+                                int k, int *y, btnode **newnode ) ;
+                void del ( int val ) ;
+                int delhelp ( int val, btnode *root ) ;
+                void clear ( btnode *root, int k ) ;
+                void copysucc ( btnode *root, int i ) ;
+                void restore ( btnode *root, int i ) ;
+                void rightshift ( int k ) ;
+                void leftshift ( int k ) ;
+                void merge ( int k ) ;
+                void show( ) ;
+                static void display ( btnode *root ) ;
+                static void deltree ( btnode *root ) ;
+                ~btree( ) ;
+} ;
+
+btree :: btree( )
+{
+        root = NULL ;
+}
+void btree :: insert ( int val )
+{
+        int i ;
+        btnode *c, *n ;
+        int flag ;
+        flag = setval ( val, root, &i, &c ) ;
+        if ( flag )
+        {
+                n = new btnode ;
+                n -> count = 1 ;
+                n -> value[1] = i ;
+                n -> child[0] = root ;
+                n -> child[1] = c ;
+                root = n ;
+        }
+}
+int btree :: setval ( int val, btnode *n, int *p, btnode **c )
+{
+        int k ;
+        if ( n == NULL )
+        {
+                *p = val ;
+                *c = NULL ;
+                return 1 ;
+        }
+        else
+        {
+                if ( searchnode ( val, n, &k ) )
+                        cout << endl << "Key value already exists." << endl ;
+                if ( setval ( val, n -> child[k], p, c ) )
+                {
+                        if ( n -> count < MAX )
+                        {
+                                fillnode ( *p, *c, n, k ) ;
+                                return 0 ;
+                        }
+                        else
+                        {
+                                split ( *p, *c, n, k, p, c ) ;
+                                return 1 ;
+                        }
+                }
+                return 0 ;
+        }
+}
+btnode * btree :: search ( int val, btnode *root, int *pos )
+{
+        if ( root == NULL )
+                return NULL ;
+        else
+        {
+                if ( searchnode ( val, root, pos ) )
+                        return root ;
+                else
+                        return search ( val, root -> child[*pos], pos ) ;
+        }
+}
+int btree :: searchnode ( int val, btnode *n, int *pos )
+{
+        if ( val < n -> value[1] )
+        {
+                *pos = 0 ;
+                return 0 ;
+        }
+        else
+        {
+                *pos = n -> count ;
+                while ( ( val < n -> value[*pos] ) && *pos > 1 )
+                        ( *pos )-- ;
+                if ( val == n -> value[*pos] )
+                        return 1 ;
+                else
+                        return 0 ;
+        }
+}
+void btree :: fillnode ( int val, btnode *c, btnode *n, int k )
+{
+        int i ;
+        for ( i = n -> count ; i > k ; i-- )
+        {
+                n -> value[i + 1] = n -> value[i] ;
+                n -> child[i + 1] = n -> child[i] ;
+        }
+        n -> value[k + 1] = val ;
+        n -> child[k + 1] = c ;
+        n -> count++ ;
+}
+void btree :: split ( int val, btnode *c, btnode *n,
+                int k, int *y, btnode **newnode )
+{
+        int i, mid ;
+
+        if ( k <= MIN )
+                mid = MIN ;
+        else
+                mid = MIN + 1 ;
+
+        *newnode = new btnode ;
+
+        for ( i = mid + 1 ; i <= MAX ; i++ )
+        {
+                ( *newnode ) -> value[i - mid] = n -> value[i] ;
+                ( *newnode ) -> child[i - mid] = n -> child[i] ;
+        }
+
+        ( *newnode ) -> count = MAX - mid ;
+        n -> count = mid ;
+
+        if ( k <= MIN )
+                fillnode ( val, c, n, k ) ;
+        else
+                fillnode ( val, c, *newnode, k - mid ) ;
+
+        *y = n -> value[n -> count] ;
+        ( *newnode ) -> child[0] = n -> child[n -> count] ;
+        n -> count-- ;
+}
+void btree :: del ( int val )
+{
+        btnode * temp ;
+
+        if ( ! delhelp ( val, root ) )
+                cout << endl << "Value " << val << " not found." ;
+        else
+        {
+                if ( root -> count == 0 )
+                {
+                        temp = root ;
+                        root = root -> child[0] ;
+                        delete temp ;
+                }
+        }
+}
+int btree :: delhelp ( int val, btnode *root )
+{
+        int i ;
+        int flag ;
+
+        if ( root == NULL )
+                return 0 ;
+        else
+        {
+                flag = searchnode ( val, root, &i ) ;
+                if ( flag )
+                {
+                        if ( root -> child[i - 1] )
+                        {
+                                copysucc ( root, i ) ;
+                                flag = delhelp ( root -> value[i], root -> child[i] ) ;
+                                if ( !flag )
+                                        cout << endl << "Value " << val << " not found." ;
+                        }
+                        else
+                                clear ( root, i ) ;
+                }
+                else
+                        flag = delhelp ( val, root -> child[i] ) ;
+                if ( root -> child[i] != NULL )
+                {
+                        if ( root -> child[i] -> count < MIN )
+                                restore ( root, i ) ;
+                }
+                return flag ;
+        }
+}
+void btree :: clear ( btnode *root, int k )
+{
+        int i ;
+        for ( i = k + 1 ; i <= root -> count ; i++ )
+        {
+                root -> value[i - 1] = root -> value[i] ;
+                root -> child[i - 1] = root -> child[i] ;
+        }
+        root -> count-- ;
+}
+void btree :: copysucc ( btnode *root, int i )
+{
+        btnode *temp = root -> child[i] ;
+
+        while ( temp -> child[0] )
+                temp = temp -> child[0] ;
+
+        root -> value[i] = temp -> value[1] ;
+}
+void btree :: restore ( btnode *root, int i )
+{
+        if ( i == 0 )
+        {
+                if ( root -> child [1] -> count > MIN )
+                        leftshift ( 1 ) ;
+                else
+                        merge ( 1 ) ;
+        }
+        else
+        {
+                if ( i == root -> count )
+                {
+                        if ( root -> child[i - 1] -> count > MIN )
+                                rightshift ( i ) ;
+                        else
+                                merge ( i ) ;
+                }
+                else
+                {
+                        if ( root -> child[i - 1] -> count > MIN )
+                                rightshift ( i ) ;
+                        else
+                        {
+                                if ( root -> child[i + 1] -> count > MIN )
+                                        leftshift ( i + 1 ) ;
+                                else
+                                        merge ( i ) ;
+                        }
+                }
+        }
+}
+void btree :: rightshift ( int k )
+{
+        int i ;
+        btnode *temp ;
+
+        temp = root -> child[k] ;
+
+        for ( i = temp -> count ; i > 0 ; i-- )
+        {
+                temp -> value[i + 1] = temp -> value[i] ;
+                temp -> child[i + 1] = temp -> child[i] ;
+        }
+
+        temp -> child[1] = temp -> child[0] ;
+        temp -> count++ ;
+        temp -> value[1] = root -> value[k] ;
+        temp = root -> child[k - 1] ;
+        root -> value[k] = temp -> value[temp -> count] ;
+        root -> child[k] -> child [0] = temp -> child[temp -> count] ;
+        temp -> count-- ;
+}
+void btree :: leftshift ( int k )
+{
+        btnode *temp ;
+
+        temp = root -> child[k - 1] ;
+        temp -> count++ ;
+        temp -> value[temp -> count] = root -> value[k] ;
+        temp -> child[temp -> count] = root -> child[k] -> child[0] ;
+        temp = root -> child[k] ;
+        root -> value[k] = temp -> value[1] ;
+        temp -> child[0] = temp -> child[1] ;
+        temp -> count-- ;
+        for ( int i = 1 ; i <= temp -> count ; i++ )
+        {
+                temp -> value[i] = temp -> value[i + 1] ;
+                temp -> child[i] = temp -> child[i + 1] ;
+        }
+}
+void btree :: merge ( int k )
+{
+        btnode *temp1, *temp2 ;
+        temp1 = root -> child[k] ;
+        temp2 = root -> child[k - 1] ;
+        temp2 -> count++ ;
+        temp2 -> value[temp2 -> count] = root -> value[k] ;
+        temp2 -> child[temp2 -> count] = root -> child[0] ;
+        for ( int i = 1 ; i <= temp1 -> count ; i++ )
+        {
+                temp2 -> count++ ;
+                temp2 -> value[temp2 -> count] = temp1 -> value[i] ;
+                temp2 -> child[temp2 -> count] = temp1 -> child[i] ;
+        }
+        for ( int i = k ; i < root -> count ; i++ )
+        {
+                root -> value[i] = root -> value[i + 1] ;
+                root -> child[i] = root -> child[i + 1] ;
+        }
+        root -> count-- ;
+        delete temp1 ;
+}
+void btree :: show( )
+{
+        display ( root ) ;
+}
+void btree :: display ( btnode *root )
+{
+    int i=0;
+        if ( root != NULL )
+        {
+                for ( i = 0 ; i < root -> count ; i++ )
+                {
+                        display ( root -> child[i] ) ;
+                        cout << root -> value[i + 1] << "\t" ;
+                }
+                display ( root -> child[i] ) ;
+        }
+}
+void btree :: deltree ( btnode *root )
+{
+    int i=0;
+        if ( root != NULL )
+        {
+                for (i = 0 ; i < root -> count ; i++ )
+                {
+                        deltree ( root -> child[i] ) ;
+                        delete ( root -> child[i] ) ;
+                }
+                deltree ( root -> child[i] ) ;
+                delete ( root -> child[i] ) ;
+        }
+}
+
+btree :: ~btree( )
+{
+        deltree ( root ) ;
+}
+
+int main( )
+{
+        btree b ;
+
+        int arr[ ] = { 27, 42, 22, 47, 32, 2, 51, 40, 13 } ;
+        int sz = sizeof ( arr ) / sizeof ( int ) ;
+
+        for ( int i = 0 ; i < sz ; i++ )
+                b.insert ( arr[i] ) ;
+        cout << "B-tree of order 5:" << endl ;
+
+        b.show( ) ;
+        b.del ( 22 ) ;
+        b.del ( 11 ) ;
+
+        cout << "\n\nB-tree after deletion of values:" << endl ;
+        b.show( ) ;
+
+        cout<<"\n";
+        return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //          ==============================    8.  Singly Linked List    ===============================
+
+
+    #include <stdio.h>
+    #include<stdlib.h>
+    // Linked List Node
+    struct node {
+        int info;
+        struct node* link;
+    };
+    struct node* start = NULL;
+
+    // Function to traverse the linked list
+    void traverse()
+    {
+        struct node* temp;
+
+        // List is empty
+        if (start == NULL)
+            printf("\nList is empty\n");
+
+        // Else print the LL
+        else {
+            temp = start;
+            while (temp != NULL) {
+                printf("Data = %d\n",
+                    temp->info);
+                temp = temp->link;
+            }
+        }
+    }
+
+    // Function to insert at the front
+    // of the linked list
+    void insertAtFront()
+    {
+        int data;
+        struct node* temp;
+        temp = malloc(sizeof(struct node));
+        printf("\nEnter number to"
+            " be inserted : ");
+        scanf("%d", &data);
+        temp->info = data;
+
+        // Pointer of temp will be
+        // assigned to start
+        temp->link = start;
+        start = temp;
+    }
+
+    // Function to insert at the end of
+    // the linked list
+    void insertAtEnd()
+    {
+        int data;
+        struct node *temp, *head;
+        temp = malloc(sizeof(struct node));
+
+        // Enter the number
+        printf("\nEnter number to"
+            " be inserted : ");
+        scanf("%d", &data);
+
+        // Changes links
+        temp->link = 0;
+        temp->info = data;
+        head = start;
+        while (head->link != NULL) {
+            head = head->link;
+        }
+        head->link = temp;
+    }
+
+    // Function to insert at any specified
+    // position in the linked list
+    void insertAtPosition()
+    {
+        struct node *temp, *newnode;
+        int pos, data, i = 1;
+        newnode = malloc(sizeof(struct node));
+
+        // Enter the position and data
+        printf("\nEnter position and data :");
+        scanf("%d %d", &pos, &data);
+
+        // Change Links
+        temp = start;
+        newnode->info = data;
+        newnode->link = 0;
+        while (i < pos - 1) {
+            temp = temp->link;
+            i++;
+        }
+        newnode->link = temp->link;
+        temp->link = newnode;
+    }
+
+    // Function to delete from the front
+    // of the linked list
+    void deleteFirst()
+    {
+        struct node* temp;
+        if (start == NULL)
+            printf("\nList is empty\n");
+        else {
+            temp = start;
+            start = start->link;
+            free(temp);
+        }
+    }
+
+    // Function to delete from the end
+    // of the linked list
+    void deleteEnd()
+    {
+        struct node *temp, *prevnode;
+        if (start == NULL)
+            printf("\nList is Empty\n");
+        else {
+            temp = start;
+            while (temp->link != 0) {
+                prevnode = temp;
+                temp = temp->link;
+            }
+            free(temp);
+            prevnode->link = 0;
+        }
+    }
+
+    // Function to delete from any specified
+    // position from the linked list
+    void deletePosition()
+    {
+        struct node *temp, *position;
+        int i = 1, pos;
+
+        // If LL is empty
+        if (start == NULL)
+            printf("\nList is empty\n");
+
+        // Otherwise
+        else {
+            printf("\nEnter index : ");
+
+            // Position to be deleted
+            scanf("%d", &pos);
+            position = malloc(sizeof(struct node));
+            temp = start;
+
+            // Traverse till position
+            while (i < pos - 1) {
+                temp = temp->link;
+                i++;
+            }
+
+            // Change Links
+            position = temp->link;
+            temp->link = position->link;
+
+            // Free memory
+            free(position);
+        }
+    }
+
+    // Driver Code
+    int main()
+    {
+        int choice;
+        while (1) {
+
+            printf("\n\t1 To see list\n");
+            printf("\t2 For insertion at"
+                " starting\n");
+            printf("\t3 For insertion at"
+                " end\n");
+            printf("\t4 For insertion at "
+                "any position\n");
+            printf("\t5 For deletion of "
+                "first element\n");
+            printf("\t6 For deletion of "
+                "last element\n");
+            printf("\t7 For deletion of "
+                "element at any position\n");
+            printf("\t12 To exit\n");
+            printf("\nEnter Choice :\n");
+            scanf("%d", &choice);
+
+            switch (choice) {
+            case 1:
+                traverse();
+                break;
+            case 2:
+                insertAtFront();
+                break;
+            case 3:
+                insertAtEnd();
+                break;
+            case 4:
+                insertAtPosition();
+                break;
+            case 5:
+                deleteFirst();
+                break;
+            case 6:
+                deleteEnd();
+                break;
+            case 7:
+                deletePosition();
+                break;
+            case 12:
+                exit(1);
+                break;
+            default:
+                printf("Incorrect Choice\n");
+            }
+        }
+        return 0;
+    }
+
+
+
+
+    //          ==============================    9.  Doubly Linked List    ===============================
+
+
+#include <iostream>
+using namespace std;
+
+// node creation
+struct Node {
+  int data;
+  struct Node* next;
+  struct Node* prev;
+};
+
+// insert node at the front
+void insertFront(struct Node** head, int data) {
+  // allocate memory for newNode
+  struct Node* newNode = new Node;
+
+  // assign data to newNode
+  newNode->data = data;
+
+  // make newNode as a head
+  newNode->next = (*head);
+
+  // assign null to prev
+  newNode->prev = NULL;
+
+  // previous of head (now head is the second node) is newNode
+  if ((*head) != NULL)
+    (*head)->prev = newNode;
+
+  // head points to newNode
+  (*head) = newNode;
+}
+
+// insert a node after a specific node
+void insertAfter(struct Node* prev_node, int data) {
+  // check if previous node is null
+  if (prev_node == NULL) {
+    cout << "previous node cannot be null";
+    return;
+  }
+
+  // allocate memory for newNode
+  struct Node* newNode = new Node;
+
+  // assign data to newNode
+  newNode->data = data;
+
+  // set next of newNode to next of prev node
+  newNode->next = prev_node->next;
+
+  // set next of prev node to newNode
+  prev_node->next = newNode;
+
+  // set prev of newNode to the previous node
+  newNode->prev = prev_node;
+
+  // set prev of newNode's next to newNode
+  if (newNode->next != NULL)
+    newNode->next->prev = newNode;
+}
+
+// insert a newNode at the end of the list
+void insertEnd(struct Node** head, int data) {
+  // allocate memory for node
+  struct Node* newNode = new Node;
+
+  // assign data to newNode
+  newNode->data = data;
+
+  // assign null to next of newNode
+  newNode->next = NULL;
+
+  // store the head node temporarily (for later use)
+  struct Node* temp = *head;
+
+  // if the linked list is empty, make the newNode as head node
+  if (*head == NULL) {
+    newNode->prev = NULL;
+    *head = newNode;
+    return;
+  }
+
+  // if the linked list is not empty, traverse to the end of the linked list
+  while (temp->next != NULL)
+    temp = temp->next;
+
+  // now, the last node of the linked list is temp
+
+  // assign next of the last node (temp) to newNode
+  temp->next = newNode;
+
+  // assign prev of newNode to temp
+  newNode->prev = temp;
+}
+
+// delete a node from the doubly linked list
+void deleteNode(struct Node** head, struct Node* del_node) {
+  // if head or del is null, deletion is not possible
+  if (*head == NULL || del_node == NULL)
+    return;
+
+  // if del_node is the head node, point the head pointer to the next of del_node
+  if (*head == del_node)
+    *head = del_node->next;
+
+  // if del_node is not at the last node, point the prev of node next to del_node to the previous of del_node
+  if (del_node->next != NULL)
+    del_node->next->prev = del_node->prev;
+
+  // if del_node is not the first node, point the next of the previous node to the next node of del_node
+  if (del_node->prev != NULL)
+    del_node->prev->next = del_node->next;
+
+  // free the memory of del_node
+  free(del_node);
+}
+
+// print the doubly linked list
+void displayList(struct Node* node) {
+  struct Node* last;
+
+  while (node != NULL) {
+    cout << node->data << "->";
+    last = node;
+    node = node->next;
+  }
+  if (node == NULL)
+    cout << "NULL\n";
+}
+
+int main() {
+  // initialize an empty node
+  struct Node* head = NULL;
+
+  insertEnd(&head, 5);
+  insertFront(&head, 1);
+  insertFront(&head, 6);
+  insertEnd(&head, 9);
+
+  // insert 11 after head
+  insertAfter(head, 11);
+
+  // insert 15 after the seond node
+  insertAfter(head->next, 15);
+
+  displayList(head);
+
+  // delete the last node
+  deleteNode(&head, head->next->next->next->next->next);
+
+  displayList(head);
+}
+
+
+
+    //          ==============================    10.  Circular Linked List    ===============================
+
+
+
+// C++ code to perform circular linked list operations
+
+#include <iostream>
+
+using namespace std;
+
+struct Node {
+  int data;
+  struct Node* next;
+};
+
+struct Node* addToEmpty(struct Node* last, int data) {
+  if (last != NULL) return last;
+
+  // allocate memory to the new node
+  struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+
+  // assign data to the new node
+  newNode->data = data;
+
+  // assign last to newNode
+  last = newNode;
+
+  // create link to iteself
+  last->next = last;
+
+  return last;
+}
+
+// add node to the front
+struct Node* addFront(struct Node* last, int data) {
+  // check if the list is empty
+  if (last == NULL) return addToEmpty(last, data);
+
+  // allocate memory to the new node
+  struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+
+  // add data to the node
+  newNode->data = data;
+
+  // store the address of the current first node in the newNode
+  newNode->next = last->next;
+
+  // make newNode as head
+  last->next = newNode;
+
+  return last;
+}
+
+// add node to the end
+struct Node* addEnd(struct Node* last, int data) {
+  // check if the node is empty
+  if (last == NULL) return addToEmpty(last, data);
+
+  // allocate memory to the new node
+  struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+
+  // add data to the node
+  newNode->data = data;
+
+  // store the address of the head node to next of newNode
+  newNode->next = last->next;
+
+  // point the current last node to the newNode
+  last->next = newNode;
+
+  // make newNode as the last node
+  last = newNode;
+
+  return last;
+}
+
+// insert node after a specific node
+struct Node* addAfter(struct Node* last, int data, int item) {
+  // check if the list is empty
+  if (last == NULL) return NULL;
+
+  struct Node *newNode, *p;
+
+  p = last->next;
+  do {
+  // if the item is found, place newNode after it
+  if (p->data == item) {
+    // allocate memory to the new node
+    newNode = (struct Node*)malloc(sizeof(struct Node));
+
+    // add data to the node
+    newNode->data = data;
+
+    // make the next of the current node as the next of newNode
+    newNode->next = p->next;
+
+    // put newNode to the next of p
+    p->next = newNode;
+
+    // if p is the last node, make newNode as the last node
+    if (p == last) last = newNode;
+    return last;
+  }
+
+  p = p->next;
+  } while (p != last->next);
+
+  cout << "\nThe given node is not present in the list" << endl;
+  return last;
+}
+
+// delete a node
+void deleteNode(Node** last, int key) {
+  // if linked list is empty
+  if (*last == NULL) return;
+
+  // if the list contains only a single node
+  if ((*last)->data == key && (*last)->next == *last) {
+  free(*last);
+  *last = NULL;
+  return;
+  }
+
+  Node *temp = *last, *d;
+
+  // if last is to be deleted
+  if ((*last)->data == key) {
+  // find the node before the last node
+  while (temp->next != *last) temp = temp->next;
+
+  // point temp node to the next of last i.e. first node
+  temp->next = (*last)->next;
+  free(*last);
+  *last = temp->next;
+  }
+
+  // travel to the node to be deleted
+  while (temp->next != *last && temp->next->data != key) {
+  temp = temp->next;
+  }
+
+  // if node to be deleted was found
+  if (temp->next->data == key) {
+  d = temp->next;
+  temp->next = d->next;
+  free(d);
+  }
+}
+
+void traverse(struct Node* last) {
+  struct Node* p;
+
+  if (last == NULL) {
+  cout << "The list is empty" << endl;
+  return;
+  }
+
+  p = last->next;
+
+  do {
+  cout << p->data << " ";
+  p = p->next;
+
+  } while (p != last->next);
+}
+
+int main() {
+  struct Node* last = NULL;
+
+  last = addToEmpty(last, 6);
+  last = addEnd(last, 8);
+  last = addFront(last, 2);
+
+  last = addAfter(last, 10, 2);
+
+  traverse(last);
+
+  deleteNode(&last, 8);
+  cout << endl;
+
+  traverse(last);
+
+  return 0;
+}
+
+
+
+
+
+#include<stdio.h>
+#include<stdlib.h>
+
+struct node
+{
+        int info;
+        struct node *link;
+};
+
+
+struct node *create_list(struct node *last)
+{
+        int i,n,data;
+        printf("\nEnter the number of nodes : ");
+        scanf("%d",&n);
+        last=NULL;
+        if(n==0)
+                return last;
+        printf("Enter the element to be inserted : ");
+        scanf("%d",&data);
+        last=addtoempty(last,data);
+
+        for(i=2;i<=n;i++)
+        {
+                printf("Enter the element to be inserted : ");
+                scanf("%d",&data);
+                last=addatend(last,data);
+        }
+        return last;
+}/*End of create_list()*/
+
+struct node *addtoempty(struct node *last,int data)
+{
+        struct node *tmp;
+        tmp=(struct node *)malloc(sizeof(struct node));
+        tmp->info=data;
+        last=tmp;
+        last->link=last;
+        return last;
+}/*End of addtoempty( )*/
+
+struct node *addatbeg(struct node *last,int data)
+{
+        struct node *tmp;
+        tmp=(struct node *)malloc(sizeof(struct node));
+        tmp->info=data;
+        tmp->link=last->link;
+        last->link=tmp;
+        return last;
+}/*End of addatbeg( )*/
+
+struct node *addatend(struct node *last,int data)
+{
+        struct node *tmp;
+        tmp=(struct node *)malloc(sizeof(struct node));
+        tmp->info=data;
+        tmp->link=last->link;
+        last->link=tmp;
+        last=tmp;
+        return last;
+}/*End of addatend( )*/
+
+struct node *addafter(struct node *last,int data,int item)
+{
+        struct node *tmp,*p;
+        p=last->link;
+        do
+        {
+                if(p->info==item)
+                {
+                        tmp=(struct node *)malloc(sizeof(struct node));
+                        tmp->info=data;
+                        tmp->link=p->link;
+                        p->link=tmp;
+                        if(p==last)
+                                last=tmp;
+                        return last;
+                }
+                p=p->link;
+        }while(p!=last->link);
+        printf("%d not present in the list\n",item);
+        return last;
+}/*End of addafter()*/
+
+struct node *del(struct node *last,int data)
+{
+        struct node *tmp,*p;
+        if(last==NULL)
+        {
+                printf("List is empty\n");
+                return last;
+        }
+        /*Deletion of only node*/
+        if(last->link==last && last->info==data)
+        {
+                tmp=last;
+                last=NULL;
+                free(tmp);
+                return last;
+        }
+        /*Deletion of first node*/
+        if(last->link->info==data)
+        {
+                tmp=last->link;
+                last->link=tmp->link;
+                free(tmp);
+                return last;
+        }
+        /*Deletion in between*/
+        p=last->link;
+        while(p->link!=last)
+        {
+                if(p->link->info==data)
+                {
+                        tmp=p->link;
+                        p->link=tmp->link;
+                        free(tmp);
+                        return last;
+                }
+                p=p->link;
+        }
+        /*Deletion of last node*/
+        if(last->info==data)
+        {
+                tmp=last;
+                p->link=last->link;
+                last=p;
+                free(tmp);
+                return last;
+        }
+        printf("\nElement %d not found\n",data);
+        return last;
+}/*End of del( )*/
+
+void display(struct node *last)
+{
+        struct node *p;
+        if(last==NULL)
+        {
+                printf("\nList is empty\n");
+                return;
+        }
+        p=last->link;
+        do
+        {
+                printf("%d ",p->info);
+                p=p->link;
+        }while(p!=last->link);
+        printf("\n");
+}/*End of display( )*/
+
+
+
+int main( )
+{
+        int choice,data,item;
+        struct node     *last=NULL;
+
+        while(1)
+        {
+                printf("\n\n1.Create List\n");
+                printf("2.Display\n");
+                printf("3.Add to empty list\n");
+                printf("4.Add at beginning\n");
+                printf("5.Add at end\n");
+                printf("6.Add after \n");
+                printf("7.Delete\n");
+                printf("8.Quit\n");
+
+                printf("\nEnter your choice : ");
+                scanf("%d",&choice);
+
+                switch(choice)
+                {
+                 case 1:
+                        last=create_list(last);
+                        break;
+                 case 2:
+                        display(last);
+                        break;
+                 case 3:
+                        printf("\nEnter the element to be inserted : ");
+                        scanf("%d",&data);
+                        last=addtoempty(last,data);
+                        break;
+                 case 4:
+                        printf("\nEnter the element to be inserted : ");
+                        scanf("%d",&data);
+                        last=addatbeg(last,data);
+                        break;
+                 case 5:
+                        printf("\nEnter the element to be inserted : ");
+                        scanf("%d",&data);
+                        last=addatend(last,data);
+                        break;
+                 case 6:
+                        printf("\nEnter the element to be inserted : ");
+                        scanf("%d",&data);
+                        printf("\nEnter the element after which to insert : ");
+                        scanf("%d",&item);
+                        last=addafter(last,data,item);
+                        break;
+                 case 7:
+                        printf("\nEnter the element to be deleted : ");
+                        scanf("%d",&data);
+                        last=del(last,data);
+                        break;
+                 case 8:
+                        exit(1);
+                 default:
+                        printf("\nWrong choice\n");
+                }/*End of switch*/
+        }/*End of while*/
+
+        return 0;
+
+}/*End of main( )*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
