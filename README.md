@@ -22,6 +22,11 @@
 
 Subject Name                                                                         | Year | Notes | Question Papers | Assignments | Books | Extra Helpful Resources |
 :------------------------------------------------------------------------------------|:----:|:-----:|:---------------:|:-----------:|:-----:|:-----------------------:|
+[Biology](Semester%201/Biology)                                                      |  I   |   ✔   |   ✔             |   -         |   ✔  |   ✔                    |
+[Calculus & Linear Algebra](Semester%201/Calculus%20%26%20Linear%20Algebra)          |  I   |   ✔   |   ✔             |   ✔         |   -  |   -                    |
+[Engineering Graphics & Design](Semester%201/Engineering%20Graphics%20%26%20Design)  |  I   |   ✔   |   ✔             |   ✔         |   ✔  |   ✔                    |
+[Programming for Problem Solving](Semester%201/Programming%20for%20Problem%20Solving)|  I   |   ✔   |   ✔             |   ✔         |   ✔  |   ✔                    |
+[Semiconductor Physics](Semester%201/Semiconductor%20Physics)                        |  I   |   ✔   |   ✔             |   ✔         |   ✔  |   -                    |
 [Basic Electrical Engineering](Semester%202/Basic%20Electrical%20Engineering)        |  I   |   ✔   |   ✔             |   ✔         |   ✔  |   -                    |
 [Chemistry](Semester%202/Chemistry)                                                  |  I   |   ✔   |   ✔             |   -         |   -  |   ✔                    |
 [English](Semester%202/English)                                                      |  I   |   ✔   |   ✔             |   -         |   -  |   ✔                    |
@@ -56,6 +61,9 @@ Subject Name                                                                    
 
 Subject Name                                                                                             | Year | Lab File | Program Outputs            | Code (cpp) |
 :--------------------------------------------------------------------------------------------------------|:----:|:--------:|:--------------------------:|:----------:|
+[Engineering Graphics & Design Practice](Semester%201/Engineering%20Graphics%20%26%20Design%20Practice)  |  I   |   ✔      |   -                       |   -        |
+[Semiconductor Physics Lab](Semester%201/Semiconductor%20Physics%20Lab)                                  |  I   |   ✔      |   -                       |   -        |
+[Programming for Problem Solving Lab](Semester%201/Programming%20for%20Problem%20Solving%20Lab)          |  I   |   -      |   -                       |   -        |
 [Basic Electrical Engineering Lab](Semester%202/Basic%20Electrical%20Engineering%20Lab)                  |  I   |   ✔      |   -                       |   -        |
 [Chemistry Lab](Semester%202/Chemistry%20Lab)                                                            |  I   |   ✔      |   -                       |   -        |
 [Language Lab](Semester%202/Language%20Lab)                                                              |  I   |   ✔      |   -                       |   -        |
