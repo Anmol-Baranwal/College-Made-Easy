@@ -42,12 +42,18 @@ Subject Name                                                                    
 
 Subject Name                                                                                             | Year | Lab File | Program Outputs            | Code (cpp) |
 :--------------------------------------------------------------------------------------------------------|:----:|:--------:|:--------------------------:|:----------:|
+[Basic Electrical Engineering Lab](Semester%202/Basic%20Electrical%20Engineering%20Lab)                  |  I   |   ✔      |   -                       |   -        |
+[Chemistry Lab](Semester%202/Chemistry%20Lab)                                                            |  I   |   ✔      |   -                       |   -        |
+[Language Lab](Semester%202/Language%20Lab)                                                              |  I   |   ✔      |   -                       |   -        |
+[Manufacturing Processes Workshop](Semester%202/Manufacturing%20Processes%20Workshop)                    |  I   |   ✔      |   -                       |   -        |
 [Data Structure and Algorithms Lab](Semester%203/Data%20Structure%20and%20Algorithms%20Lab)              |  II  |   ✔      |   ✔                       |   ✔        |
-[Object Oriented Programming Lab](Semester%203/Object%20Oriented%20Programming%20Lab)                    |  II  |   ✔      |   ✔                       |   -        |
 [Digital Electronics Lab](Semester%203/Digital%20Electronics%20Lab)                                      |  II  |   ✔      |   -                       |   -         |
+[Object Oriented Programming Lab](Semester%203/Object%20Oriented%20Programming%20Lab)                    |  II  |   ✔      |   ✔                       |   -        |
 [Design and Analysis of Algorithms Lab](Semester%204/Design%20and%20Analysis%20of%20Algorithms%20Lab)    |  II  |   ✔      |   ✔                       |   ✔        | 
 [Internet Technology and Management Lab](Semester%204/Internet%20Technology%20and%20Management%20Lab)    |  II  |   ✔      |   ✔                       |   ✔        |
 [Operating Systems Lab](Semester%204/Operating%20Systems%20Lab)                                          |  II  |   ✔      |   ✔                       |   -        |
+[Database Management Systems Lab](Semester%205/Database%20Management%20Systems%20Lab)                    |  III |   ✔      |   ✔                       |   -        |
+[Essential of Information Technology Lab](Semester%205/Essential%20of%20Information%20Technology%20Lab)  |  III |   ✔      |   ✔                       |   -        |
 
 <br>
 
