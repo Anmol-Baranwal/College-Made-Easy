@@ -1,12 +1,24 @@
-# College Resources (Read this first)
+<!--- ------------------------------------------------------------------------------------------------------------------------------------------------------ -->
+<!--- -- Heading ------------------------------------------------------------------------------------------------------------------------------------------- -->
+<!--- ------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 
-> This is for a computer science student. 
+# <img src="https://user-images.githubusercontent.com/74038190/221357928-6b2450e6-c314-4821-a1d0-a5635ddd34d7.png" alt="Bookmark Tabs" width="35" />  College Resources (Read this first)
 
-> The above resources will make your life easier. I have studied using these set of resources and scored very well.
+> ℹ️ These resources are for B.Tech Computer Science students. You can see the syllabus [here](https://github.com/Anmol-Baranwal/College-Resources/tree/main/Syllabus).
+
+- Trust me, this will make your B.Tech life easier in terms of academics. 
+
+- Extra helpful things like references have been added to must-know things on a semester basis.
+
+- Please star this repository, to show love and help others to find this. 
 
 <br>
 
-## Theory Subjects
+<!--- ------------------------------------------------------------------------------------------------------------------------------------------------------ -->
+<!--- -- Theory Subjects ----------------------------------------------------------------------------------------------------------------------------------- -->
+<!--- ------------------------------------------------------------------------------------------------------------------------------------------------------ -->
+
+## <img src="https://user-images.githubusercontent.com/74038190/221358014-beff019d-6055-4b3c-87b4-d3227672707c.png" alt="Bookmark Tabs" width="35" /> Theory Subjects
 
 Subject Name                                                                         | Year | Notes | Question Papers | Assignments | Books | Extra Helpful Resources |
 :------------------------------------------------------------------------------------|:----:|:-----:|:---------------:|:-----------:|:-----:|:-----------------------:|
@@ -34,11 +46,13 @@ Subject Name                                                                    
 [Microprocessor & Interfacing](Semester%205/Microprocessor%20%26%20Interfacing)      | III  |   ✔   |   ✔           |   ✔          |   -  |   ✔                     |
 
 
-
-
 <br>
 
-## Practical Subjects
+<!--- ------------------------------------------------------------------------------------------------------------------------------------------------------ -->
+<!--- -- Practical Subjects -------------------------------------------------------------------------------------------------------------------------------- -->
+<!--- ------------------------------------------------------------------------------------------------------------------------------------------------------ -->
+
+## <img src="https://user-images.githubusercontent.com/74038190/221358014-beff019d-6055-4b3c-87b4-d3227672707c.png" alt="Bookmark Tabs" width="35" /> Practical Subjects
 
 Subject Name                                                                                             | Year | Lab File | Program Outputs            | Code (cpp) |
 :--------------------------------------------------------------------------------------------------------|:----:|:--------:|:--------------------------:|:----------:|
@@ -55,18 +69,30 @@ Subject Name                                                                    
 [Database Management Systems Lab](Semester%205/Database%20Management%20Systems%20Lab)                    |  III |   ✔      |   ✔                       |   -        |
 [Essential of Information Technology Lab](Semester%205/Essential%20of%20Information%20Technology%20Lab)  |  III |   ✔      |   ✔                       |   -        |
 
+
 <br>
+
+<!--- ------------------------------------------------------------------------------------------------------------------------------------------------------ -->
+<!--- -- How to Use ---------------------------------------------------------------------------------------------------------------------------------------- -->
+<!--- ------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 
 ## How to use ?
 
-> ℹ️ Here are two ways to use these resources with ease.
+> ℹ️ Here are various ways to use these resources with ease -
+<br>
+
+- If you only need a section then, use [this](https://minhaskamal.github.io/DownGit/#/home) by pasting the URL of the folder you wish to download.
+
 <br>
 
 - You can download all the files using `DOWNLOAD ZIP` after clicking the green code button as shown below.
 
 <img src="https://user-images.githubusercontent.com/74038190/220546526-52d84291-5e42-44c0-bea7-a98b8418f772.png" width="900" alt="Download Files" />
 
-- If you only need a section then, use [this](https://minhaskamal.github.io/DownGit/#/home) by pasting the url of the directory you wish to download.
+<br>
+
+- You can clone this repo using the terminal then you can view it in your own local desktop. Visit [here](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) to learn how to clone any repository.
+
 
 <br>
 
@@ -77,9 +103,9 @@ Subject Name                                                                    
 ## <img src="https://user-images.githubusercontent.com/74038190/216122041-518ac897-8d92-4c6b-9b3f-ca01dcaf38ee.png" width="30" /> Thanks for Visiting
 
 ### A 🌟 is appreciated!! Please support if this is helpful to you <img src="https://user-images.githubusercontent.com/74038190/216125640-2783ebd5-e63e-4ed1-b491-627a40b24850.png" width="25" />
-<br>
 
-- At top right corner with option of `Star`
 
-<img src="https://user-images.githubusercontent.com/74038190/220547508-bb4f071f-a482-4e3d-a01c-d6b747bbb064.png" width="900" alt="How to star the repo" />
+### At top right corner with option of `Star`
+
+<!-- <img src="https://user-images.githubusercontent.com/74038190/220547508-bb4f071f-a482-4e3d-a01c-d6b747bbb064.png" width="800" alt="How to star the repo" /> -->
 
