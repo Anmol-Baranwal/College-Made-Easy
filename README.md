@@ -10,18 +10,30 @@
 
 Subject Name                                                                         | Year | Notes | Question Papers | Assignments | Books | Extra Helpful Resources |
 :------------------------------------------------------------------------------------|:----:|:-----:|:---------------:|:-----------:|:-----:|:-----------------------:|
+[Basic Electrical Engineering](Semester%202/Basic%20Electrical%20Engineering)        |  I   |   ✔   |   ✔             |   ✔         |   ✔  |   -                    |
+[Chemistry](Semester%202/Chemistry)                                                  |  I   |   ✔   |   ✔             |   -         |   -  |   ✔                    |
+[English](Semester%202/English)                                                      |  I   |   ✔   |   ✔             |   -         |   -  |   ✔                    |
+[Basic Electrical Engineering](Semester%202/Basic%20Electrical%20Engineering)        |  I   |   ✔   |   ✔             |   ✔         |   ✔  |   -                   |
+[Business Intelligence and Entrepreneurship](Semester%203/Business%20Intelligence%20and%20Entrepreneurship) | II |   ✔  |   -   |   - |   ✔  |   -                  |
 [Data Structure and Algorithms](Semester%203/Data%20Structure%20and%20Algorithms)    |  II  |   ✔   |   -             |   -         |   ✔  |   ✔                    |
 [Digital Electronics](Semester%203/Digital%20Electronics)                            |  II  |   ✔   |   ✔            |   -          |   ✔  |   ✔                    |
-[Mathematics-III](Semester%203/Mathematics-III)                                      |  II  |   ✔   |   ✔            |   -          |   ✔  |   -                    |
+[Mathematics-III](Semester%203/Mathematics-III)                                      |  II  |   ✔   |   ✔            |   -          |   -  |    -                    |
 [Object Oriented Programming](Semester%203/Object%20Oriented%20Programming)          | II   |   ✔   |   ✔            |   -          |   ✔  |   -                    |
-[Business Intelligence and Entrepreneurship](Semester%203/Business%20Intelligence%20and%20Entrepreneurship) | II |   ✔  |   -   |   - |   ✔  |   -                  |
 [Principles of Programming Languages](Semester%203/Principles%20of%20Programming%20Languages) | II |   ✔   | -          |  -          |   ✔  |   -                  |
 [Design and Analysis of Algorithms](Semester%204/Design%20and%20Analysis%20of%20Algorithms) | II   |   ✔   | ✔        |   -          |   ✔  |   -                   |
 [Discrete Mathematics](Semester%204/Discrete%20Mathematics)                          | II   |   ✔   |   ✔            |   -          |   -  |   ✔                    |
 [Environmental Sciences](Semester%204/Environmental%20Sciences)                      | II   |   ✔   |   -            |   ✔          |   ✔  |   ✔                   |
-[Universal Human Values](Semester%204/Universal%20Human%20Values)                    | II   |   ✔   |   ✔            |   -          |   -  |   ✔                    |
-[Discrete Mathematics](Semester%204/Discrete%20Mathematics)                          | II   |   ✔   |   ✔            |   -          |   -  |   ✔                    |
 [Internet Technology and Management](Semester%204/Internet%20Technology%20and%20Management)  | II   |   ✔   |   ✔    |   ✔          |   -  |   ✔                    |
+[Universal Human Values](Semester%204/Universal%20Human%20Values)                    | II   |   ✔   |   ✔            |   -          |   -  |   ✔                    |
+[Advanced Algorithms](Semester%205/Advanced%20Algorithms)                            | III  |   ✔   |   -            |   -          |   ✔  |   ✔                    |
+[Computer Organization & Architecture](Semester%205/Computer%20Organization%20%26%20Architecture) | III  |   ✔   |   -      |   -   |   -  |   ✔                    |
+[Database Management Systems](Semester%205/Database%20Management%20Systems)          | III  |   ✔   |   ✔            |   -          |   -  |   ✔                    |
+[Energy Resources & Management](Semester%205/Energy%20Resources%20%26%20Management)  | III  |   ✔   |   ✔            |   ✔          |   -  |   -                    |
+[Essential of Information Technology](Semester%205/Essential%20of%20Information%20Technology) | III  |   ✔   |   ✔     |   ✔          |   ✔  |   -                  |
+[Formal Language & Automata Theory](Semester%205/Formal%20Language%20%26%20Automata%20Theory) | III  |   ✔   |   ✔     |   -          |   ✔  |   ✔                  |
+[Microprocessor & Interfacing](Semester%205/Microprocessor%20%26%20Interfacing)      | III  |   ✔   |   ✔           |   ✔          |   -  |   ✔                     |
+
+
 
 
 <br>
